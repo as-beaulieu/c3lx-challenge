@@ -15,7 +15,7 @@ func getChallengesHandler(svc service.Service) http.HandlerFunc {
 			fmt.Println("error creating simple message", err)
 			respondWithJSON(w, r, 500, r.Body)
 		}
-		respondWithJSON(w, r, http.StatusCreated, response)
+		respondWithJSON(w, r, http.StatusOK, response)
 	}
 }
 

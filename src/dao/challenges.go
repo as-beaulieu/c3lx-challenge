@@ -13,7 +13,7 @@ type ChallengeStore interface {
 
 func (d dao) GetAllChallenges() ([]*models.Challenge, error) {
 	results := make([]*models.Challenge, 0)
-	queryString := `SELECT * FROM users;`
+	queryString := `SELECT * FROM ablue.challenges;`
 
 	rows, err := d.connection.Query(queryString)
 	if err != nil {
