@@ -3,6 +3,7 @@ package dao
 import (
 	"database/sql"
 	"fmt"
+	_ "github.com/lib/pq"
 )
 
 type DAO interface {

@@ -6,6 +6,7 @@ import (
 )
 
 type Service interface {
+	HealthReporter
 }
 
 type service struct {

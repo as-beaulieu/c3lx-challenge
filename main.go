@@ -1,6 +1,7 @@
 package main
 
 import (
+	"c3lx-challenge/server"
 	"c3lx-challenge/service"
 	"c3lx-challenge/src/dao"
 	"c3lx-challenge/src/logging"
