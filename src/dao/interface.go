@@ -7,6 +7,7 @@ import (
 )
 
 type DAO interface {
+	ChallengeStore
 }
 
 type dao struct {
