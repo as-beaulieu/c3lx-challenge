@@ -10,6 +10,8 @@ import (
 
 func getChallengesHandler(svc service.Service) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Set("Content-Type", "text/html; charset=utf-8")
+		w.Header().Set("Access-Control-Allow-Origin", "*")
 		response, err := svc.GetChallenges()
 		if err != nil {
 			fmt.Println("error creating simple message", err)
@@ -21,6 +23,8 @@ func getChallengesHandler(svc service.Service) http.HandlerFunc {
 
 func acceptChallengeHandler(svc service.Service) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Set("Content-Type", "text/html; charset=utf-8")
+		w.Header().Set("Access-Control-Allow-Origin", "*")
 		var challengeRequest models.AcceptChallengeRequest
 
 		decoder := json.NewDecoder(r.Body)
