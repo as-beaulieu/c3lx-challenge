@@ -12,7 +12,8 @@ func makeRouter(svc service.Service) http.Handler {
 	//Heartbeat and maintenance functions
 	muxRouter.HandleFunc("/heartbeat", heartbeatHandler(svc)).Methods("GET")
 
-	//muxRouter.HandleFunc("/one", oneHandler(svc)).Methods("GET")
+	muxRouter.HandleFunc("/challenges", getChallengesHandler(svc)).Methods("GET")
+	muxRouter.HandleFunc("/challenge", acceptChallengeHandler(svc)).Methods("POST")
 
 	return muxRouter
 }

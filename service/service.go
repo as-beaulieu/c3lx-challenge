@@ -7,6 +7,7 @@ import (
 
 type Service interface {
 	HealthReporter
+	ChallengesOperator
 }
 
 type service struct {
