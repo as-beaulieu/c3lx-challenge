@@ -1,6 +1,9 @@
 # c3lx-challenge
 
-Written with golang 1.15
+## disclaimers
+
+POST call to accept challenge returns accepted state before the call. 
+Another call to GET challenges will reflect the change that was made.
 
 ## go mod support
 
@@ -37,4 +40,7 @@ VALUES
     'Average seven hours of sleep for five nights in a row',
     'Rip Van Winkle'
 );
+
+alter table ablue.challenges
+	add accepted bool;
 ```

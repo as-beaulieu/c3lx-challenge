@@ -41,5 +41,14 @@ func (s service) AcceptChallenge(request models.AcceptChallengeRequest) (*models
 	}
 
 	logger.Info("successful get of challenge by name")
+
+	_, err = s.postgres.UpdateChallengeAccepted(request.Name)
+	if err != nil {
+		logger.Error("challenge not accepted", zap.Error(err))
+		return nil, err
+	}
+
+	logger.Info("challenge accepted!")
+
 	return challenge, nil
 }

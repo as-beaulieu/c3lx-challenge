@@ -9,6 +9,7 @@ import (
 type ChallengeStore interface {
 	GetAllChallenges() ([]*models.Challenge, error)
 	GetChallengeByName(name string) (*models.Challenge, error)
+	UpdateChallengeAccepted(name string) (*models.Challenge, error)
 }
 
 func (d dao) GetAllChallenges() ([]*models.Challenge, error) {
@@ -25,7 +26,8 @@ func (d dao) GetAllChallenges() ([]*models.Challenge, error) {
 		var challenge models.Challenge
 
 		if err := rows.Scan(
-			&challenge.Name, &challenge.Description, &challenge.FullName); err != nil {
+			&challenge.Name, &challenge.Description,
+			&challenge.FullName, &challenge.Accepted); err != nil {
 			log.Println(err)
 			return nil, err
 		}
@@ -49,7 +51,33 @@ func (d dao) GetChallengeByName(name string) (*models.Challenge, error) {
 
 	for row.Next() {
 		if err := row.Scan(
-			&challenge.Name, &challenge.Description, &challenge.FullName); err != nil {
+			&challenge.Name, &challenge.Description,
+			&challenge.FullName, &challenge.Accepted); err != nil {
+			log.Println(err)
+			return nil, err
+		}
+	}
+
+	return &challenge, nil
+}
+
+func (d dao) UpdateChallengeAccepted(name string) (*models.Challenge, error) {
+	var challenge models.Challenge
+
+	queryString := `UPDATE ablue.challenges
+						SET accepted = NOT accepted
+						WHERE name = $1;`
+
+	row, err := d.connection.Query(queryString, name)
+	if err != nil {
+		log.Println(err)
+		return nil, err
+	}
+
+	for row.Next() {
+		if err := row.Scan(
+			&challenge.Name, &challenge.Description,
+			&challenge.FullName, &challenge.Accepted); err != nil {
 			log.Println(err)
 			return nil, err
 		}
