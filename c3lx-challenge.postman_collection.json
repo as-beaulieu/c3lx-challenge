@@ -1,0 +1,61 @@
+{
+	"info": {
+		"_postman_id": "b578e1f3-2169-471a-839e-dd178ba12ed2",
+		"name": "c3lx-challenge",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Challenges",
+			"item": [
+				{
+					"name": "Get Challenges",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/challenges",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"challenges"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Accept Challenge",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Hello\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/challenge",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"challenge"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
